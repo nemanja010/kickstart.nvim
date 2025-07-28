@@ -436,6 +436,23 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+	  -- added for deletion
+	  
+		vim.keymap.set('n', '<leader>d', function()
+		  local filename = vim.fn.expand('%')
+		  if filename == '' then
+			print("No file to delete!")
+			return
+		  end
+		  local choice = vim.fn.confirm("Delete file '" .. filename .. "'?", "&Yes\n&No", 2)
+		  if choice == 1 then
+			vim.fn.delete(filename)
+			vim.cmd('bdelete!')
+			print("Deleted " .. filename)
+		  else
+			print("Delete canceled")
+		  end
+	end, { desc = '[D]elete current file with confirmation' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -984,7 +1001,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
