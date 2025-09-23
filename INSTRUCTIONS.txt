@@ -1,0 +1,2 @@
+# Default config
+New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim" -Target "D:\configs\nvim-configs\nvim"

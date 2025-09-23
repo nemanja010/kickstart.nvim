@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -436,23 +436,23 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-	  -- added for deletion
-	  
-		vim.keymap.set('n', '<leader>d', function()
-		  local filename = vim.fn.expand('%')
-		  if filename == '' then
-			print("No file to delete!")
-			return
-		  end
-		  local choice = vim.fn.confirm("Delete file '" .. filename .. "'?", "&Yes\n&No", 2)
-		  if choice == 1 then
-			vim.fn.delete(filename)
-			vim.cmd('bdelete!')
-			print("Deleted " .. filename)
-		  else
-			print("Delete canceled")
-		  end
-	end, { desc = '[D]elete current file with confirmation' })
+      -- added for deletion
+
+      vim.keymap.set('n', '<leader>d', function()
+        local filename = vim.fn.expand '%'
+        if filename == '' then
+          print 'No file to delete!'
+          return
+        end
+        local choice = vim.fn.confirm("Delete file '" .. filename .. "'?", '&Yes\n&No', 2)
+        if choice == 1 then
+          vim.fn.delete(filename)
+          vim.cmd 'bdelete!'
+          print('Deleted ' .. filename)
+        else
+          print 'Delete canceled'
+        end
+      end, { desc = '[D]elete current file with confirmation' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
