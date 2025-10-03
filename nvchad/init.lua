@@ -35,3 +35,11 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+-- -- add custom nvim-tree mappings
+local custom_nvimtree = require "custom.nvim-tree-attach"
+
+require("nvim-tree").setup {
+  on_attach = custom_nvimtree.nvim_tree_on_attach,
+}
+-- -- end of adding custom nvim-tree mappings
