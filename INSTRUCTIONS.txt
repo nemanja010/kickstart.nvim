@@ -1,2 +1,9 @@
 # Default config
-New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim" -Target "D:\configs\nvim-configs\nvim"
+# Open AppData location: C:\Users\MANIC\AppData\Local
+# And execute this to create link to different NVIM config folders
+
+New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim" -Target "C:\Code\tools\dotfiles\nvim\default"
+
+New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim-default" -Target "C:\Code\tools\dotfiles\nvim\default"
+
+New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim-nvchad" -Target "C:\Code\tools\dotfiles\nvim\nvchad"
