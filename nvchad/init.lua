@@ -43,3 +43,12 @@ require("nvim-tree").setup {
   on_attach = custom_nvimtree.nvim_tree_on_attach,
 }
 -- -- end of adding custom nvim-tree mappings
+-- tree sitter config for C-sharp
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c_sharp" }, -- add "c_sharp" to the list of parsers to install
+  highlight = {
+    enable = true,              -- falsq will disable the whole extension
+  },
+}
+
+--- end of treesitter stuff
